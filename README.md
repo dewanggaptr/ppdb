@@ -23,8 +23,8 @@
 * Pastikan tidak terjadi `conflict` saat melakukan pull request
 
 ## Update Local Repository
-* Lakukan 'fetch and merge' pada repository anda
+* Lakukan pembaruan dengan tekan `fetch and merge` pada repository anda
 * Lalu `git pull` pada terminal (!!Anda tidak perlu melakukan clone atau npm install lagi apabila telah mengikuti instruksi <b>First Contribution</b>)
-* !!! Pastikan ketika akan melakukan git pull, anda sudah melakukan commit terlebih dahulu atau pastika tidak ada staging pada workspace
+* !!! Pastikan ketika akan melakukan git pull, anda sudah melakukan commit terlebih dahulu atau pastikan tidak ada staging pada workspace
 * Selamat Repo Lokal Anda telah up to date!
 * Silahkan berkontribusi kembali dan commit serta pull request hasil kontribusi anda
