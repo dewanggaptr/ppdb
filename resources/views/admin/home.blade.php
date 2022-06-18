@@ -14,13 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Welcome, You are user!') }}
-
-                    <table class="table table-responsive">
-                        <tr><th>Username</th><th>:</th><td>{{ $user->name }}</td></tr>
-                        <tr><th>Email</th><th>:</th><td>{{ $user->email }}</td></tr>
-                        <tr><th>Created At</th><th>:</th><td>{{ $user->created_at }}</td></tr>
-                    </table>
+                    {{ __('Welcome, You are admin!') }}
                 </div>
             </div>
         </div>
