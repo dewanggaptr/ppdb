@@ -36,7 +36,7 @@
                             <div class="col-md-4">
                                 <input id="nisn" type="text" class="form-control{{ $errors->has('nisn') ? ' is-invalid' : '' }}" name="nisn" value="{{ old('nisn') }}" required autofocus>
 
-                                @if ($errors->has('nis'))
+                                @if ($errors->has('nisn'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('nisn') }}</strong>
                                     </span>
@@ -199,7 +199,7 @@
                                 @endif
                             </div>
                         </div>
-                        div class="form-group row">
+                        <div class="form-group row">
                             <label for="pendidikan_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Riwayat Pendidikan Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -214,7 +214,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="nama_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ibu) }}</label>
+                            <label for="nama_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ibu') }}</label>
 
                             <div class="col-md-6">
                                 <input id="nama_ibu" type="text" class="form-control{{ $errors->has('nama_ibu') ? ' is-invalid' : '' }}" name="nama_ibu" value="{{ old('nama_ibu') }}" required autofocus>
@@ -226,7 +226,7 @@
                                 @endif
                             </div>
                         </div>
-                        div class="form-group row">
+                        <div class="form-group row">
                             <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -253,6 +253,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -55,4 +55,6 @@ class CreatePendaftarTable extends Migration
     {
         Schema::dropIfExists('pendaftar');
     }
+
+    
 }

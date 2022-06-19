@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pendaftar;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use PDF;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+
+
 
 class PendaftarController extends Controller
 {
@@ -18,13 +24,7 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        $title = 'Dashboard Calon Siswa';
-        $id =  Auth::user()->id;
-        $user = DB::table('user')->where('id', $id)->first();
-        $pendaftar = DB::table('pendaftar')->where('user_id', $id)->first();
-
-        return view('pendaftar.detail', compact('title', 'user', 'pendaftar'));
-    
+        return view('pendaftar.index');
     }
 
     /**
@@ -45,6 +45,7 @@ class PendaftarController extends Controller
      */
     public function store(Request $request)
     {
+        //pendaftaran
         $validator = Validator::make($request->all(), 
         [
             
@@ -84,20 +85,20 @@ class PendaftarController extends Controller
         {
         return back()->withErrors($validator)->withInput();  
         }
-
+        $user = new User;
         $user_id = $user->id;
         $pendaftar = new Pendaftar;
         $pendaftar->user_id = $user_id;
-        $pendaftar->nama = Input::get('nama');
-        $pendaftar->nis = Input::get('nisn');
-        $pendaftar->tempat_lahir = Input::get('tempat_lahir');
-        $pendaftar->tanggal_lahir = Input::get('tanggal_lahir');
-        $pendaftar->email = Input::get('email');
-        $pendaftar->alamat = Input::get('alamat');
-        $pendaftar->telp = Input::get('telp');
-        $pendaftar->agama = Input::get('agama');
-        $pendaftar->asalSekolah = Input::get('asalSekolah');
-        $pendaftar->jurusan = Input::get('jurusan');
+        $pendaftar->nama = $request->get('nama');
+        $pendaftar->nisn = $request->get('nisn');
+        $pendaftar->tempat_lahir = $request->get('tempat_lahir');
+        $pendaftar->tanggal_lahir = $request->get('tanggal_lahir');
+        $pendaftar->email = $request->get('email');
+        $pendaftar->alamat = $request->get('alamat');
+        $pendaftar->telp = $request->get('telp');
+        $pendaftar->agama = $request->get('agama');
+        $pendaftar->asalSekolah = $request->get('asalSekolah');
+        $pendaftar->jurusan = $request->get('jurusan');
         if($file = $request->hasFile('url_foto')) {
             $namaFile = $user->id;
             $file = $request->file('url_foto') ;
@@ -106,18 +107,18 @@ class PendaftarController extends Controller
             $file->move($destinationPath,$fileName);
             $pendaftar->url_foto = $fileName ;
         }
-        $pendaftar->nama_ayah = Input::get('nama_ayah');
-        $pendaftar->pekerjaan_ayah = Input::get('pekerjaan_ayah');
-        $pendaftar->pendidikan_ayah = Input::get('pendidikan_ayah');
-        $pendaftar->nama_ibu = Input::get('nama_ibu');
-        $pendaftar->pekerjaan_ibu = Input::get('pekerjaan_ibu');
-        $pendaftar->pendidikan_ibu = Input::get('pendidikan_ibu');
+        $pendaftar->nama_ayah = $request->get('nama_ayah');
+        $pendaftar->pekerjaan_ayah = $request->get('pekerjaan_ayah');
+        $pendaftar->pendidikan_ayah = $request->get('pendidikan_ayah');
+        $pendaftar->nama_ibu = $request->get('nama_ibu');
+        $pendaftar->pekerjaan_ibu = $request->get('pekerjaan_ibu');
+        $pendaftar->pendidikan_ibu = $request->get('pendidikan_ibu');
         
         $pendaftar->save();
      
 
-        return redirect()->back()->with('success', 'Registrasi berhasil!');
-
+        return redirect()->route('pendaftar.detail')
+            ->with('success', 'Registrasi berhasil!');
     }
 
     /**
@@ -126,9 +127,14 @@ class PendaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $title = 'Dashboard Calon Siswa';
+        $id =  Auth::user()->id;
+        $user = DB::table('user')->where('id', $id)->first();
+        $pendaftar = DB::table('pendaftar')->where('user_id', $id)->first();
+
+        return view('pendaftar.detail', compact('title', 'user', 'pendaftar'));
     }
 
     /**
