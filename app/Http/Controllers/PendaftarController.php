@@ -170,4 +170,12 @@ class PendaftarController extends Controller
     {
         //
     }
+
+    public function cetak_formulir($user_id){
+        $pendaftar = Pendaftar::find($user_id);
+
+        $pdf = PDF::loadview('pendaftar.cetak_form', ['pendaftar' => $pendaftar]);
+        return $pdf->stream();
+    
+    }
 }
