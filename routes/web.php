@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PendaftarController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,6 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 
 //Admin Route
 Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
+
+Route::get('/pendaftar/cetak_formulir/{user_id}', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir');
 
