@@ -28,5 +28,3 @@
 * !!! Pastikan ketika akan melakukan git pull, anda sudah melakukan commit terlebih dahulu atau pastikan tidak ada staging pada workspace
 * Selamat Repo Lokal Anda telah up to date!
 * Silahkan berkontribusi kembali dan commit serta pull request hasil kontribusi anda
-
-## AA
