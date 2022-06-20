@@ -31,3 +31,7 @@
 
 ## Nama Anggota Kelompok:
 1. Dewangga Putra
+2. Diajeng Nidzom
+3. Farah Zulfa
+4. Khoirun Nisak
+5. Andi Mushawwir
