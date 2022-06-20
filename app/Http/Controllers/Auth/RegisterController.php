@@ -76,7 +76,7 @@ class RegisterController extends Controller
     
     protected function registered()
     {   
-        // auth()->logout();
+        auth()->logout();
         return redirect()->route('login');
     }
 }
