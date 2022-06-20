@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
+});
+
+Route::get('/syarat', function () {
+    return view('syaratpage');
 });
 
 Auth::routes();
