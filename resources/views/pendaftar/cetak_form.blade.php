@@ -6,7 +6,6 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ $title }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -27,11 +26,11 @@
                         </tr>
                         <tr>
                           <td class="table-info">TTL</td>
-                          <td>{{ $pendaftar->tempat_lahir }}, {{ $biodata->tanggal_lahir }}</td>
+                          <td>{{ $pendaftar->tempat_lahir }}, {{ $pendaftar->tanggal_lahir }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">Email</td>
-                          <td>{{ $biodata->email }}</td>
+                          <td>{{ $pendaftar->email }}</td>
                         </tr>  
                         <tr>
                           <td class="table-info" width="200px">Alamat</td>
@@ -47,7 +46,7 @@
                         </tr>
                         <tr>
                           <td class="table-info">Asal Sekolah</td>
-                          <td>{{ $biodata->asalSekolah }}</td>
+                          <td>{{ $pendaftar->asalSekolah }}</td>
                         </tr>
                         <tr>
                           <td class="table-info" width="200px">Jurusan</td>

@@ -31,5 +31,7 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 //Admin Route
 Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
 
-Route::get('/pendaftar/cetak_formulir/{user_id}', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir');
+
+
+Route::get('pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
 

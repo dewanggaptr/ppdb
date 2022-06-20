@@ -24,7 +24,7 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        return view('pendaftar.index');
+       
     }
 
     /**
@@ -129,12 +129,9 @@ class PendaftarController extends Controller
      */
     public function show()
     {
-        $title = 'Dashboard Calon Siswa';
         $id =  Auth::user()->id;
-        $user = DB::table('user')->where('id', $id)->first();
-        $pendaftar = DB::table('pendaftar')->where('user_id', $id)->first();
-
-        return view('pendaftar.detail', compact('title', 'user', 'pendaftar'));
+        $pendaftar = Pendaftar::where('user_id',$id)->first();
+        return view('pendaftar.detail', ['Pendaftar' => $pendaftar]);
     }
 
     /**
@@ -171,10 +168,11 @@ class PendaftarController extends Controller
         //
     }
 
-    public function cetak_formulir($user_id){
-        $pendaftar = Pendaftar::find($user_id);
+    public function cetak_formulir(){
+        $id =  Auth::user()->id;
+        $pendaftar = Pendaftar::where('user_id',$id)->first();
 
-        $pdf = PDF::loadview('pendaftar.cetak_form', ['pendaftar' => $pendaftar]);
+        $pdf = PDF::loadview('pendaftar.cetak_form', ['Pendaftar' => $pendaftar]);
         return $pdf->stream();
     
     }
