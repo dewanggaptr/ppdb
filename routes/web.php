@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendaftarController;
@@ -30,10 +31,20 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //User Route
-Route::get('home', [HomeController::class, 'index'])->name('home');
+
+
+
+Route::group(['prefix' => '/user'], function(){
+    Route::get('/', [HomeController::class, 'index'])->name('user');
+    Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar');
+    Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan');
+});
+
 
 //Admin Route
 Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
 
 Route::get('/pendaftar/cetak_formulir/{user_id}', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir');
 
+
+Route::get('logout', [LoginController::class, 'logout']);

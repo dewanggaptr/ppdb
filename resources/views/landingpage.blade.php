@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>FlexStart Bootstrap Template - Index</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -54,7 +52,7 @@
                     <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
                     <li><a class="nav-link scrollto" href="/syarat">Syarat Pendaftaran</a></li>
                     <li><a class="nav-link scrollto" href="#services">Tentang</a></li>
-                    <li><a class="getstarted" href="home">Login</a></li>
+                    <li><a class="getstarted" href="{{ route('login') }}">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

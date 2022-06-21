@@ -13,7 +13,7 @@
                         <div class="alert alert-success">{{ session()->get('success') }}</div>
                     @endif
 
-                    <form method="POST" action="{{ route('pendaftar.store') }}" enctype="multipart/form-data" id="myForm">
+                    <form method="POST" action="{{ route('daftarkan') }}" enctype="multipart/form-data" id="myForm">
                         @csrf
 
                         <div class="form-group row">
