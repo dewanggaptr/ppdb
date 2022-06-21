@@ -20,6 +20,6 @@ class UserAccess
             return $next($request);
         }
           
-        return redirect('home')->with('error',"You don't have admin access.");
+        return redirect('user')->with('error',"You don't have admin access.");
     }
 }

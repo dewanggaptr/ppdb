@@ -24,7 +24,7 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        return view('pendaftar.index');
+        return view('user.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class PendaftarController extends Controller
      */
     public function create()
     {
-        return view('pendaftar.create');
+        return view('user.create');
     }
 
     /**
@@ -83,7 +83,7 @@ class PendaftarController extends Controller
 
         if($validator->fails())
         {
-        return back()->withErrors($validator)->withInput();  
+            return back()->withErrors($validator)->withInput();  
         }
         $user = new User;
         $user_id = $user->id;
@@ -116,8 +116,7 @@ class PendaftarController extends Controller
         
         $pendaftar->save();
      
-
-        return redirect()->route('pendaftar.detail')
+        return redirect()->route('user.detail')
             ->with('success', 'Registrasi berhasil!');
     }
 
