@@ -26,7 +26,7 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //User Route
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('pendaftar.index', [PendaftarController::class, 'index'])->name('pendaftar.index');
 
 //Admin Route
 Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
