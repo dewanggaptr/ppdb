@@ -46,8 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Biodata()
+    public function pendaftar()
     {
-        return $this->hasOne(Pendaftar::Class);
-    } 
+        return $this->hasOne(Pendaftar::class);
+    }
 }

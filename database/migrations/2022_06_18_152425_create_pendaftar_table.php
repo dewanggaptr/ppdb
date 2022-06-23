@@ -35,10 +35,6 @@ class CreatePendaftarTable extends Migration
                 $table->string('nama_ibu', 200);    
                 $table->string('pekerjaan_ibu', 100); 
                 $table->string('pendidikan_ibu', 100); 
-                
-    
-                $table->unsignedBigInteger('user_id')->nullable(); 
-                $table->foreign('user_id')->references('id')->on('user'); 
 
                 $table->timestamps();
     

@@ -32,19 +32,23 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //User Route
 
+// Route::group(['prefix' => '/user'], function(){
+//     Route::get('/', [HomeController::class, 'index'])->name('user');
+//     Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar');
+//     Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan');
+// });
 
 
-Route::group(['prefix' => '/user'], function(){
-    Route::get('/', [HomeController::class, 'index'])->name('user');
-    Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar');
-    Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan');
+// //Admin Route
+// Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
+
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('admin.dashboard')->middleware('admin');
 });
-
-
-//Admin Route
-Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
-
-Route::get('/pendaftar/cetak_formulir/{user_id}', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir');
-
+Route::group(['prefix' => '/user'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('user.home')->middleware('user');
+    Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar')->middleware('user');
+    Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan')->middleware('user');
+});
 
 Route::get('logout', [LoginController::class, 'logout']);

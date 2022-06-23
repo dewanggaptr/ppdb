@@ -36,7 +36,7 @@ class Pendaftar extends Model
         'pendidikan_ibu',
     ];
 
-    public function User()
+    public function user()
 	{
 		return $this->belongsTo(User::class);
 	}  
