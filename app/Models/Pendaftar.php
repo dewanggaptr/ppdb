@@ -19,8 +19,9 @@ class Pendaftar extends Model
     protected $fillable = [
         'nama',
         'nisn',
-        'tempat_lahir',
         'tanggal_lahir',
+        'tempat_lahir',
+        'jenisKel',
         'email',
         'alamat',
         'telp',

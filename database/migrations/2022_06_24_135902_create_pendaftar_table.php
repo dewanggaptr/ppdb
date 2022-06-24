@@ -19,7 +19,8 @@ class CreatePendaftarTable extends Migration
                 $table->string('nama', 200);    
                 $table->string('nisn', 45);    
                 $table->string('tempat_lahir', 45);    
-                $table->date('tanggal_lahir');    
+                $table->date('tanggal_lahir');
+                $table->string('jenisKel', 45);    
                 $table->string('email', 45);   
                 $table->longText('alamat');   
                 $table->string('telp', 45); 

@@ -45,79 +45,53 @@ class PendaftarController extends Controller
      */
     public function store(Request $request)
     {
-        //pendaftaran
-        $validator = Validator::make($request->all(), 
-        [
+        if ($request->file('url_foto')){
+            $image_name = $request->file('url_foto')->store('image', 'public');
+        }
+            $request->validate([
+                'nama' => 'required|string|max:200',
+                'nisn' => 'required|string|max:45',
+                'tempat_lahir' => 'required|string|max:45',
+                'tanggal_lahir' => 'required',
+                'jenisKel' => 'required|string|max:45',
+                'email' => 'required|string|max:45',
+                'alamat' => 'required',
+                'telp' => 'required|string|max:45',
+                'agama' => 'required|string|max:45',
+                'asalSekolah' => 'required|string|max:100',
+                'url_foto' => 'mimes:pdf,jpeg,png,jpg|max:2048',
+                'nama_ayah' => 'required|string|max:200',
+                'pekerjaan_ayah' => 'required|string|max:100',
+                'pendidikan_ayah' => 'required|string|max:100',
+                'nama_ibu' => 'required|string|max:200',
+                'pekerjaan_ibu' => 'required|string|max:100',
+                'pendidikan_ibu' => 'required|string|max:100', 
+            ]);            
+            $pendaftar = new Pendaftar;
+            $pendaftar->nama = $request->get('nama');
+            $pendaftar->nisn = $request->get('nisn');
+            $pendaftar->tempat_lahir = $request->get('tempat_lahir');
+            $pendaftar->tanggal_lahir = $request->get('tanggal_lahir');
+            $pendaftar->jenisKel = $request->get('jenisKel');
+            $pendaftar->email = $request->get('email');
+            $pendaftar->alamat = $request->get('alamat');
+            $pendaftar->telp = $request->get('telp');
+            $pendaftar->agama = $request->get('agama');
+            $pendaftar->asalSekolah = $request->get('asalSekolah');
+            $pendaftar->jurusan = $request->get('jurusan');
+            $pendaftar->url_foto = $image_name;
+            $pendaftar->nama_ayah = $request->get('nama_ayah');
+            $pendaftar->pekerjaan_ayah = $request->get('pekerjaan_ayah');
+            $pendaftar->pendidikan_ayah = $request->get('pendidikan_ayah');
+            $pendaftar->nama_ibu = $request->get('nama_ibu');
+            $pendaftar->pekerjaan_ibu = $request->get('pekerjaan_ibu');
+            $pendaftar->pendidikan_ibu = $request->get('pendidikan_ibu');
+
+            $user = Auth::user()->id;
+            $pendaftar->user_id = $user;
             
-            'nama' => 'required|string|max:200',
-            'nisn' => 'required|string|max:45',
-            'tempat_lahir' => 'required|string|max:45',
-            'tanggal_lahir' => 'required',
-            'email' => 'required|string|max:45',
-            'alamat' => 'required',
-            'telp' => 'required|string|max:45',
-            'agama' => 'required|string|max:45',
-            'asalSekolah' => 'required|string|max:100',
-            'url_foto' => 'mimes:pdf,jpeg,png,jpg|max:2048',
-            'nama_ayah' => 'required|string|max:200',
-            'pekerjaan_ayah' => 'required|string|max:100',
-            'pendidikan_ayah' => 'required|string|max:100',
-            'nama_ibu' => 'required|string|max:200',
-            'pekerjaan_ibu' => 'required|string|max:100',
-            'pendidikan_ibu' => 'required|string|max:100',
-
-        ],
-
-        $messages = 
-        [   
-            'nama.required' => 'Nama tidak boleh kosong!',
-            'nisn.required' => 'Nama tidak boleh kosong!',
-            'tempat_lahir.required' => 'Nama tidak boleh kosong!',
-            'tanggal_lahir.required' => 'Nama tidak boleh kosong!',
-            'alamat.required' => 'Nama tidak boleh kosong!',
-            'url_foto.image' => 'Format file tidak mendukung! Gunakan jpg, jpeg, png, gif atau pdf.',
-            'url_foto.max' => 'Ukuran file terlalu besar, maksimal file 2Mb !',
-
-
-        ]);     
-
-        if($validator->fails())
-        {
-            return back()->withErrors($validator)->withInput();  
-        }
-        $user = new User;
-        $user_id = $user->id;
-        $pendaftar = new Pendaftar;
-        $pendaftar->user_id = $user_id;
-        $pendaftar->nama = $request->get('nama');
-        $pendaftar->nisn = $request->get('nisn');
-        $pendaftar->tempat_lahir = $request->get('tempat_lahir');
-        $pendaftar->tanggal_lahir = $request->get('tanggal_lahir');
-        $pendaftar->email = $request->get('email');
-        $pendaftar->alamat = $request->get('alamat');
-        $pendaftar->telp = $request->get('telp');
-        $pendaftar->agama = $request->get('agama');
-        $pendaftar->asalSekolah = $request->get('asalSekolah');
-        $pendaftar->jurusan = $request->get('jurusan');
-        if($file = $request->hasFile('url_foto')) {
-            $namaFile = $user->id;
-            $file = $request->file('url_foto') ;
-            $fileName = $namaFile.'_'.$file->getClientOriginalName() ;
-            $destinationPath = public_path().'/images/' ;
-            $file->move($destinationPath,$fileName);
-            $pendaftar->url_foto = $fileName ;
-        }
-        $pendaftar->nama_ayah = $request->get('nama_ayah');
-        $pendaftar->pekerjaan_ayah = $request->get('pekerjaan_ayah');
-        $pendaftar->pendidikan_ayah = $request->get('pendidikan_ayah');
-        $pendaftar->nama_ibu = $request->get('nama_ibu');
-        $pendaftar->pekerjaan_ibu = $request->get('pekerjaan_ibu');
-        $pendaftar->pendidikan_ibu = $request->get('pendidikan_ibu');
-        
-        $pendaftar->save();
-     
-        return redirect()->route('user.detail')
-            ->with('success', 'Registrasi berhasil!');
+            $pendaftar->save();
+            return redirect()->route('show')->with('success', 'Registrasi berhasil!');
     }
 
     /**
@@ -128,12 +102,10 @@ class PendaftarController extends Controller
      */
     public function show()
     {
-        $title = 'Dashboard Calon Siswa';
-        $id =  Auth::user()->id;
-        $user = DB::table('user')->where('id', $id)->first();
-        $pendaftar = DB::table('pendaftar')->where('user_id', $id)->first();
+        $userr = Auth::user()->id;
+        $user = DB::table('pendaftar')->where('user_id', $userr)->first();
 
-        return view('pendaftar.detail', compact('title', 'user', 'pendaftar'));
+        return view('user.detail', compact( 'user'));
     }
 
     /**
@@ -142,9 +114,12 @@ class PendaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $userr = Auth::user()->id;
+        $user = DB::table('pendaftar')->where('user_id', $userr)->first();
+
+        return view('user.edit', compact('userr', 'user'));
     }
 
     /**
@@ -154,9 +129,54 @@ class PendaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request)
+        {
+            if ($request->file('url_foto')){
+                $image_name = $request->file('url_foto')->store('image', 'public');
+            }
+                $request->validate([
+                    'nama' => 'required|string|max:200',
+                    'nisn' => 'required|string|max:45',
+                    'tempat_lahir' => 'required|string|max:45',
+                    'tanggal_lahir' => 'required',
+                    'jenisKel' => 'required|string|max:45',
+                    'email' => 'required|string|max:45',
+                    'alamat' => 'required',
+                    'telp' => 'required|string|max:45',
+                    'agama' => 'required|string|max:45',
+                    'asalSekolah' => 'required|string|max:100',
+                    'url_foto' => 'mimes:pdf,jpeg,png,jpg|max:2048',
+                    'nama_ayah' => 'required|string|max:200',
+                    'pekerjaan_ayah' => 'required|string|max:100',
+                    'pendidikan_ayah' => 'required|string|max:100',
+                    'nama_ibu' => 'required|string|max:200',
+                    'pekerjaan_ibu' => 'required|string|max:100',
+                    'pendidikan_ibu' => 'required|string|max:100',
+                ]);            
+                $user = Auth::user()->id;
+                $pendaftar = Pendaftar::where('user_id', $user)->first(); 
+                $pendaftar->nama = $request->get('nama');
+                $pendaftar->nisn = $request->get('nisn');
+                $pendaftar->tempat_lahir = $request->get('tempat_lahir');
+                $pendaftar->tanggal_lahir = $request->get('tanggal_lahir');
+                $pendaftar->jenisKel = $request->get('jenisKel');
+                $pendaftar->email = $request->get('email');
+                $pendaftar->alamat = $request->get('alamat');
+                $pendaftar->telp = $request->get('telp');
+                $pendaftar->agama = $request->get('agama');
+                $pendaftar->asalSekolah = $request->get('asalSekolah');
+                $pendaftar->jurusan = $request->get('jurusan');
+                $pendaftar->url_foto = $image_name;
+                $pendaftar->nama_ayah = $request->get('nama_ayah');
+                $pendaftar->pekerjaan_ayah = $request->get('pekerjaan_ayah');
+                $pendaftar->pendidikan_ayah = $request->get('pendidikan_ayah');
+                $pendaftar->nama_ibu = $request->get('nama_ibu');
+                $pendaftar->pekerjaan_ibu = $request->get('pekerjaan_ibu');
+                $pendaftar->pendidikan_ibu = $request->get('pendidikan_ibu');
+                $pendaftar->user_id = $user;
+                
+                $pendaftar->save();
+                return redirect()->route('show')->with('success', 'Registrasi berhasil!');
     }
 
     /**
@@ -170,10 +190,11 @@ class PendaftarController extends Controller
         //
     }
 
-    public function cetak_formulir($user_id){
-        $pendaftar = Pendaftar::find($user_id);
+    public function cetak_formulir(){
 
-        $pdf = PDF::loadview('pendaftar.cetak_form', ['pendaftar' => $pendaftar]);
+        $userr = Auth::user()->id;
+        $user = Pendaftar::where('user_id', $userr)->first();
+        $pdf = PDF::loadview('user.cetak_form', compact('userr', 'user'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->stream();
     
     }
