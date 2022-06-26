@@ -28,6 +28,10 @@ Route::get('/syarat', function () {
     return view('syaratpage');
 });
 
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
 Auth::routes();
 
 Route::group(['prefix' => '/admin'], function () {

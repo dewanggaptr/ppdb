@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.daftar')
 
 @section('content')
+<br><br>
+<br><br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="card">
-                <div class="card-header">{{ __('Form Pendaftaran Siswa Baru') }}</div>
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">{{ __('Form Pendaftaran Siswa Baru') }}</div>
 
                 <div class="card-body">
 
@@ -16,7 +18,7 @@
                     <form method="POST" action="{{ route('daftarkan') }}" enctype="multipart/form-data" id="myForm">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
                             <div class="col-md-6">
@@ -30,7 +32,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="nisn" class="col-md-4 col-form-label text-md-right">{{ __('NISN') }}</label>
 
                             <div class="col-md-4">
@@ -43,7 +45,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="tempat_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tempat Lahir') }}</label>
 
                             <div class="col-md-5">
@@ -57,7 +59,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="tanggal_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
 
                             <div class="col-md-4">
@@ -73,7 +75,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="jenisKel" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
 
                             <div class="col-md-6">
@@ -87,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -100,7 +102,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Alamat Lengkap') }}</label>
                             <div class="col-md-6">
                                 <textarea id="alamat" type="text" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" name="alamat" value="{{ old('alamat') }}" rows="3"></textarea>
@@ -112,7 +114,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="telp" class="col-md-4 col-form-label text-md-right">{{ __('Telp/Handphone') }}</label>
 
                             <div class="col-md-4">
@@ -125,7 +127,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="agama" class="col-md-4 col-form-label text-md-right">{{ __('Agama') }}</label>
 
                             <div class="col-md-4">
@@ -138,7 +140,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="asalSekolah" class="col-md-4 col-form-label text-md-right">{{ __('Asal Sekolah') }}</label>
 
                             <div class="col-md-4">
@@ -152,7 +154,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">{{ __('Jurusan yang dipilih') }}</label>
                             <div class="col-md-7">
                                 <div class="custom-control custom-radio custom-control-inline mt-2">
@@ -170,7 +172,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="url_foto" class="col-md-4 col-form-label text-md-right">{{ __('Upload Foto') }}</label>
                             <div class="col-md-7">
                                 <input id="url_foto" type="file" class="form-control{{ $errors->has('url_foto') ? ' is-invalid' : '' }}" name="url_foto" value="{{ old('url_foto') }}" required autofocus>
@@ -184,7 +186,7 @@
                         </div>
 
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="nama_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -198,7 +200,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="pekerjaan_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -211,7 +213,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="pendidikan_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Riwayat Pendidikan Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -225,7 +227,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="nama_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -238,7 +240,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -252,7 +254,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-bottom: 2%">
                             <label for="pendidikan_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Riwayat Pendidikan Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -266,7 +268,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0" style="padding-bottom: 2%">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Daftar') }}

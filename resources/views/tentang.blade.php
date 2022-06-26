@@ -13,6 +13,7 @@
     <!-- Favicons -->
     <link href="assets/img/logo.png" rel="icon">
 
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -51,8 +52,8 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link" href="/">Beranda</a></li>
-                    <li><a class="nav-link active" href="/syarat">Syarat Pendaftaran</a></li>
-                    <li><a class="nav-link" href="/tentang">Tentang</a></li>
+                    <li><a class="nav-link" href="/syarat">Syarat Pendaftaran</a></li>
+                    <li><a class="nav-link active" href="/tentang">Tentang</a></li>
                     <li class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -91,49 +92,95 @@
 
     <br><br><br>
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team">
 
             <div class="container" data-aos="fade-up">
-                <div class="row gx-0 justify-content-center">
 
-                    <div class="col-lg-6 justify-content-center" data-aos="fade-up"
-                        data-aos-delay="200">
-                        <div class="content ">
+                <header class="section-header">
+                    <h2>Team</h2>
+                    <p>Our hard working team</p>
+                </header>
 
-                            <h2>KETENTUAN KHUSUS</h2>
-                            <br>
-                            <ol>
-                                <li>Buku Rapor SMP/sederajat.</li>
-                                <li>Surat Keterangan Nilai Rapor Semester 1-5 SMP/sederajat yang diterbitkan oleh Satuan Pendidikan yang bersangkutan.</li>
-                                <li>Ijazah SMP/sederajat atau surat keterangan yang berpenghargaan sama dengan ijazah SMP/ijazah Program Paket B/Ijazah Satuan Pendidikan luar negeri yang dinilai/dihargai sama/setingkat dengan SMP.</li>
-                                <li>Akta kelahiran dengan batas usia paling tinggi 21 tahun pada awal Tahun Ajaran 2022/2023, dan belum menikah.</li>
-                                <li>Kartu Keluarga yang diterbitkan dan/atau telah tinggal paling singkat 1 tahun sebelum tanggal pendaftaran PPDB berdasarkan data administrasi kependudukan yang diselenggarakan oleh Dinas Pemberdayaan Masyarakat, Desa, Kependudukan dan Pencatatan Sipil Provinsi.</li>
-                                <li>Piagam Prestasi/Penghargaan pada jenis kejuaraan berjenjang/tidak berjenjang (khusus bagi yang memiliki).</li>
-                            </ol>
+                <div class="row gy-5 justify-content-center">
+
+                    <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-1.png" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <h4>Dewangga</h4>
+                                <span>Dewangga Putra Yusafa</span>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br><br>
-            <div class="container" data-aos="fade-up">
-                <div class="row gx-0 justify-content-center">
 
-                    <div class="col-lg-6 d-flex justify-content-center" data-aos="fade-up"
-                        data-aos-delay="200">
-                        <div class="text-center text-lg-start">
-                            <a href="/user"
-                                class="btn btn-primary">
-                                <span>DAFTAR SEKARANG</span>
-                            </a>
+                    <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-2.png" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <h4>Andi</h4>
+                                <span>Andi Mushawwir Rahmat</span>
+
+                            </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-3.png" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <h4>Diajeng</h4>
+                                <span>Diajeng Nidzom Yoesharnilillah</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-4.png" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <h4>Farah</h4>
+                                <span>Farah Zulfa Hamidah</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="assets/img/team/team-5.png" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <h4>Nisak</h4>
+                                <span>Inda Khoirun Nisak</span>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
 
-        </section><!-- End About Section -->
+        </section><!-- End Team Section -->
 
-        
+
 
     </main><!-- End #main -->
 

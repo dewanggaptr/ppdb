@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <title>PPDB SMAN 5 MALANG</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/img/logo.png" rel="icon">
 
     <!-- Google Fonts -->
     <link
@@ -49,10 +50,39 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="/syarat">Syarat Pendaftaran</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Tentang</a></li>
-                    <li><a class="getstarted" href="{{ route('login') }}">Login</a></li>
+                    <li><a class="nav-link active" href="/">Beranda</a></li>
+                    <li><a class="nav-link" href="/syarat">Syarat Pendaftaran</a></li>
+                    <li><a class="nav-link" href="/tentang">Tentang</a></li>
+                    
+                    <li class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -70,7 +100,7 @@
                     <h2 data-aos="fade-up" data-aos-delay="400">SMA NEGERI 5 MALANG Tahun Pelajaran 2022/2023</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
-                            <a href="#about"
+                            <a href="/user"
                                 class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span>DAFTAR SEKARANG</span>
                                 <i class="bi bi-arrow-right"></i>
