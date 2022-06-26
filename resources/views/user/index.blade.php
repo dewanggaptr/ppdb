@@ -27,9 +27,6 @@
                         <div class="float-right my-2">
                             <a class="btn btn-success" href="{{ route('daftar') }}">Registrasi</a>
                         </div>
-                        {{-- <div class="float-right my-2">
-                            <a class="btn btn-success" href="{{ route('user.cetak_form,  $pendaftar->user_id') }}">Cetak Formulir</a>
-                        </div> --}}
                     </div>
                 </div>
             </div>

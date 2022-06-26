@@ -1,11 +1,7 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ $title }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,79 +10,87 @@
                         </div>
                     @endif
 
-               <img src='{{ asset("images/$pendaftar->url_foto") }}' class='img-thumbnail' alt='User Image'>
+                    <h5 align="center"><b>IDENTITAS CALON SISWA</b> </h5>
+
+               
                     <table class="table table-sm">
                       <tbody>
                         <tr>
                           <td class="table-info" width="200px">Nama Lengkap</td>
-                          <td>{{ $pendaftar->nama }}</td>
+                          <td>: {{ $user->nama }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">NISN</td>
-                          <td>{{ $pendaftar->nisn }}</td>
+                          <td>: {{ $user->nisn }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">TTL</td>
-                          <td>{{ $pendaftar->tempat_lahir }}, {{ $biodata->tanggal_lahir }}</td>
+                          <td>: {{ $user->tempat_lahir }}, {{ $user->tanggal_lahir }}</td>
                         </tr>
                         <tr>
+                          <td class="table-info">Jenis Kelamin</td>
+                          <td>: {{ $user->jenisKel }}</td>
+                        </tr> 
+                        <tr>
                           <td class="table-info">Email</td>
-                          <td>{{ $biodata->email }}</td>
+                          <td>: {{ $user->email }}</td>
                         </tr>  
                         <tr>
                           <td class="table-info" width="200px">Alamat</td>
-                          <td>{{ $pendaftar->alamat }}</td>
+                          <td>: {{ $user->alamat }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">No. Telp/Handphone</td>
-                          <td>{{ $pendaftar->telp }}</td>
+                          <td>: {{ $user->telp }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">Agama</td>
-                          <td>{{ $pendaftar->agama }}</td>
+                          <td>: {{ $user->agama }}</td>
                         </tr>
                         <tr>
                           <td class="table-info">Asal Sekolah</td>
-                          <td>{{ $biodata->asalSekolah }}</td>
+                          <td>: {{ $user->asalSekolah }}</td>
                         </tr>
                         <tr>
                           <td class="table-info" width="200px">Jurusan</td>
-                          <td>{{ $pendaftar->jurusan }}</td>
+                          <td>: {{ $user->jurusan }}</td>
                         </tr>               
-                      </tbody>
-
-                      <br><br><br><br>
-
-                      <tbody>
-                        <tr>
-                          <td class="table-info" width="200px">Nama Ayah</td>
-                          <td>{{ $pendaftar->nama_ayah }}</td>
-                        </tr>
-                        <tr>
-                          <td class="table-info">Pekerjaan Ayah</td>
-                          <td>{{ $pendaftar->pekerjaan_ayah }}</td>
-                        </tr>
-                        <tr>
-                          <td class="table-info">Riwayat Pendidikan Ayah</td>
-                          <td>{{ $pendaftar->pendidikan_ayah }}</td>
-                        </tr> <tr>
-                          <td class="table-info" width="200px">Nama Ibu</td>
-                          <td>{{ $pendaftar->nama_ibu }}</td>
-                        </tr>
-                        <tr>
-                          <td class="table-info">Pekerjaan Ibu</td>
-                          <td>{{ $pendaftar->pekerjaan_ibu }}</td>
-                        </tr>
-                        <tr>
-                          <td class="table-info">Riwayat Pendidikan Ibu</td>
-                          <td>{{ $pendaftar->pendidikan_ibu }}</td>
-                        </tr>
                       </tbody>
                     </table>
 
+                    <br>
+                    <h5 align="center"><b>IDENTITAS ORANG TUA</b> </h5>
+                    <br>
+
+                    <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                          <td class="table-info" width="200px">Nama Ayah</td>
+                          <td>: {{ $user->nama_ayah }}</td>
+                        </tr>
+                        <tr>
+                          <td class="table-info">Pekerjaan Ayah</td>
+                          <td>: {{ $user->pekerjaan_ayah }}</td>
+                        </tr>
+                        <tr>
+                          <td class="table-info">Riwayat Pendidikan Ayah</td>
+                          <td>: {{ $user->pendidikan_ayah }}</td>
+                        </tr> <tr>
+                          <td class="table-info" width="200px">Nama Ibu</td>
+                          <td>: {{ $user->nama_ibu }}</td>
+                        </tr>
+                        <tr>
+                          <td class="table-info">Pekerjaan Ibu</td>
+                          <td>: {{ $user->pekerjaan_ibu }}</td>
+                        </tr>
+                        <tr>
+                          <td class="table-info">Riwayat Pendidikan Ibu</td>
+                          <td>: {{ $user->pendidikan_ibu }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection

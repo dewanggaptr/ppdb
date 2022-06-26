@@ -16,15 +16,13 @@ class CreateUserTable extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // $table->tinyInteger('role')->default(0);
-            $table->rememberToken();
             $table->enum('role', ['Admin', 'User'])->default('User');
-            $table->unsignedBigInteger('pendaftar_id')->nullable();
-            $table->foreign('pendaftar_id')->references('id')->on('pendaftar');
+            // 0=user, 1=admin
+            $table->rememberToken();
             $table->timestamps();
         });
     }
