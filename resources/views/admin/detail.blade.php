@@ -9,13 +9,12 @@
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Username: </b>{{ $user->username }}</li>
-                    <li class="list-group-item"><b>Nama: </b>{{ $user->name }}</li>
-                    <li class="list-group-item"><b>Email: </b>{{ $user->email }}</li>
-                    <li class="list-group-item"><b>Password: </b>{{ $user->password }}</li>
+                    <li class="list-group-item"><b>Username: </b>{{ $akun->username }}</li>
+                    <li class="list-group-item"><b>Nama: </b>{{ $akun->name }}</li>
+                    <li class="list-group-item"><b>Email: </b>{{ $akun->email }}</li>
                 </ul>
             </div>
-            <a class="btn btn-success mt-3" href="{{ route('index') }}">Kembali</a>
+            <a class="btn btn-success mt-3" href="{{ route('admin.index') }}">Kembali</a>
         </div>
     </div>
 </div>

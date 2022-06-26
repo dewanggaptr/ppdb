@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="get" action="{{ route('store') }}" id="myForm" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.store') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -35,12 +35,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="form-control" id="password" aria-describedby="password" >
-                    </div>
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <input type="text" name="role" class="form-control" id="role" aria-describedby="role" >
-                    </div>
+                        <input type="password" name="password" class="form-control" id="password" aria-describedby="password" >
+                    </div> 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -29,29 +30,17 @@ Route::get('/syarat', function () {
 
 Auth::routes();
 
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//User Route
-
-// Route::group(['prefix' => '/user'], function(){
-//     Route::get('/', [HomeController::class, 'index'])->name('user');
-//     Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar');
-//     Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan');
-// });
-
-
-// //Admin Route
-// Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
-
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('admin.dashboard')->middleware('admin');
-    Route::get('/create', [UserController::class, 'create'])->name('create')->middleware('admin');
-    Route::get('/create/user', [UserController::class, 'store'])->name('store')->middleware('admin');
-    Route::get('/search', [UserController::class, 'search'])->name('search')->middleware('admin');
-    Route::get('/delete', [UserController::class, 'destroy'])->name('destroy')->middleware('admin');
-    Route::get('/show/{id}', [UserController::class, 'show'])->name('show')->middleware('admin');
-    Route::get('/edit', [UserController::class, 'edit'])->name('edit')->middleware('admin');
-    Route::get('/data/user', [UserController::class, 'index'])->name('index')->middleware('admin'); //kenapa malah nampilkan create form pendaftaran?
+    Route::get('/index', [AdminController::class, 'index'])->name('admin.index')->middleware('admin');
+    Route::get('/create', [AdminController::class, 'create'])->name('admin.create')->middleware('admin');
+    Route::post('/create/user', [AdminController::class, 'store'])->name('admin.store')->middleware('admin');
+    //Route::get('/search', [AdminController::class, 'search'])->name('admin.search')->middleware('admin');
+    Route::get('/show/{id}', [AdminController::class, 'show'])->name('admin.show')->middleware('admin');
+    Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit')->middleware('admin');
+    Route::put('/update/{id}', [AdminController::class, 'update'])->name('admin.update')->middleware('admin');
+    Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy')->middleware('admin');
+    //Route::get('/data/user', [UserController::class, 'index'])->name('index')->middleware('admin'); //kenapa malah nampilkan create form pendaftaran?
 });
 
 Route::group(['prefix' => '/user'], function () {
