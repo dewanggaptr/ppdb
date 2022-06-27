@@ -50,7 +50,7 @@
     
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link" href="/admin/index">Kembali</a></li>
+                        <li><a class="nav-link" href="/admin">Kembali</a></li>
                         <li class="navbar-nav ms-auto">
                             <!-- Authentication Links -->
                             @guest

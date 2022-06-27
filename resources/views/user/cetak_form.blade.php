@@ -12,9 +12,11 @@
 
                     <h5 align="center"><b>IDENTITAS CALON SISWA</b> </h5>
 
-               
                     <table class="table table-sm">
                       <tbody>
+                        {{-- <tr>
+                          <td><img src="{{ public_path('storage/'.$user->url_foto) }}"  width="120px"></td>
+                        </tr> --}}
                         <tr>
                           <td class="table-info" width="200px">Nama Lengkap</td>
                           <td>: {{ $user->nama }}</td>

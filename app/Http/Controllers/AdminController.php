@@ -52,10 +52,10 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'username'=> ['required', 'string'],
-            'name'=> ['required', 'string'],
-            'email'=> ['required', 'string', 'email'],
-            'password' => ['required', 'string', 'min:3'],
+            'username'=> 'required|string|max:50',
+            'name'=> 'required|string|max|100',
+            'email'=> 'required|string|email',
+            'password' => 'required|string|min:3',
         ]);
 
         $akun = new User;

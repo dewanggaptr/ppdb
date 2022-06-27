@@ -61,12 +61,5 @@
 Jumlah Data : {{ $akun->total() }} <br />
 Data Per Halaman : {{ $akun->perPage() }} <br /> --}}
         <br>{{ $paginate->links() }}
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="float-right my-2">
-                    <a class="btn btn-success" href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
