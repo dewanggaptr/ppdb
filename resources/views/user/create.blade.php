@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="card border-primary">
-                <div class="card-header bg-primary text-white">{{ __('Form Pendaftaran Siswa Baru') }}</div>
+            <div class="card">
+                <div class="card-header">{{ __('Form Pendaftaran Siswa Baru') }}</div>
 
                 <div class="card-body">
 
@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('daftarkan') }}" enctype="multipart/form-data" id="myForm">
                         @csrf
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
                             <div class="col-md-6">
@@ -32,7 +32,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="nisn" class="col-md-4 col-form-label text-md-right">{{ __('NISN') }}</label>
 
                             <div class="col-md-4">
@@ -45,7 +45,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="tempat_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tempat Lahir') }}</label>
 
                             <div class="col-md-5">
@@ -59,13 +59,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="tanggal_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
 
                             <div class="col-md-4">
-                                <input id="tanggal_lahir" type="text" class="form-control{{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required autofocus>
+                                <input id="tanggal_lahir" type="date" class="form-control{{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required autofocus>
                                 <small id="passwordHelpBlock" class="form-text text-danger">
-                                 Format: YYYY-MM-DD, contoh 1990-11-29.
                                 </small>                                
 
                                 @if ($errors->has('tanggal_lahir'))
@@ -75,12 +74,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="jenisKel" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="jenisKel" type="jenisKel" class="form-control{{ $errors->has('jenisKel') ? ' is-invalid' : '' }}" name="jenisKel" value="{{ old('jenisKel') }}" required>
-
+                            <div class="col-md-4">
+                                <select id="jenisKel" name="jenisKel" class="form-control{{ $errors->has('jenisKel') ? ' is-invalid' : '' }}" value="{{ old('jenisKel') }}" required autofocus>
+                                    <option selected='selected'> </option>
+                                    <option value='Laki-laki'>Laki-laki</option>
+                                    <option value='Perempuan'>Perempuan</option>
+                                </select>
                                 @if ($errors->has('jenisKel'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('jenisKel') }}</strong>
@@ -89,7 +91,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -102,7 +104,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Alamat Lengkap') }}</label>
                             <div class="col-md-6">
                                 <textarea id="alamat" type="text" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" name="alamat" value="{{ old('alamat') }}" rows="3"></textarea>
@@ -114,7 +116,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="telp" class="col-md-4 col-form-label text-md-right">{{ __('Telp/Handphone') }}</label>
 
                             <div class="col-md-4">
@@ -127,12 +129,18 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="agama" class="col-md-4 col-form-label text-md-right">{{ __('Agama') }}</label>
 
                             <div class="col-md-4">
-                                <input id="agama" type="text" class="form-control{{ $errors->has('agama') ? ' is-invalid' : '' }}" name="agama" value="{{ old('agama') }}" required autofocus>
-
+                                <select  id="agama" name='agama' class="form-control{{ $errors->has('agama') ? ' is-invalid' : '' }}" value="{{ old('agama') }}" required autofocus>
+                                    <option selected='selected'> </option>
+                                    <option value='Islam' >Islam</option>
+                                    <option value='Kristen'>Kristen</option>
+                                    <option value='Katholik'>Katholik</option>
+                                    <option value='Hindu'>Hindu</option>
+                                    <option value='Budha'>Budha</option>
+                                </select>
                                 @if ($errors->has('agama'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('agama') }}</strong>
@@ -140,7 +148,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="asalSekolah" class="col-md-4 col-form-label text-md-right">{{ __('Asal Sekolah') }}</label>
 
                             <div class="col-md-4">
@@ -154,25 +162,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">{{ __('Jurusan yang dipilih') }}</label>
-                            <div class="col-md-7">
-                                <div class="custom-control custom-radio custom-control-inline mt-2">
-                                  <input type="radio" id="customRadioInline1" name="jurusan" class="custom-control-input" value="IPA">
-                                  <label class="custom-control-label" for="customRadioInline1">IPA</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                  <input type="radio" id="customRadioInline2" name="jurusan" class="custom-control-input" value="IPS">
-                                  <label class="custom-control-label" for="customRadioInline2">IPS</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                  <input type="radio" id="customRadioInline2" name="jurusan" class="custom-control-input" value="BAHASA">
-                                  <label class="custom-control-label" for="customRadioInline2">BAHASA</label>
-                                </div>
+
+                            <div class="col-md-4">
+                                <select  id="jurusan" name="jurusan" class="form-control{{ $errors->has('jurusan') ? ' is-invalid' : '' }}" value="{{ old('jurusan') }}" placeholder ="pilih jurusan" required autofocus >
+                                    <option selected='selected'> </option>
+                                    <option value='IPA' >IPA</option>
+                                    <option value='IPS'>IPS</option>
+                                    <option value='BAHASA'>BAHASA</option>
+                                </select>
+                                @if ($errors->has('jurusan'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('jurusan') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="url_foto" class="col-md-4 col-form-label text-md-right">{{ __('Upload Foto') }}</label>
                             <div class="col-md-7">
                                 <input id="url_foto" type="file" class="form-control{{ $errors->has('url_foto') ? ' is-invalid' : '' }}" name="url_foto" value="{{ old('url_foto') }}" required autofocus>
@@ -186,7 +194,7 @@
                         </div>
 
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="nama_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -200,7 +208,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="pekerjaan_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -213,7 +221,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="pendidikan_ayah" class="col-md-4 col-form-label text-md-right">{{ __('Riwayat Pendidikan Ayah') }}</label>
 
                             <div class="col-md-6">
@@ -227,7 +235,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="nama_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Nama Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -240,7 +248,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Pekerjaan Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -254,7 +262,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row" style="padding-bottom: 2%">
+                        <div class="form-group row">
                             <label for="pendidikan_ibu" class="col-md-4 col-form-label text-md-right">{{ __('Riwayat Pendidikan Ibu') }}</label>
 
                             <div class="col-md-6">
@@ -268,7 +276,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0" style="padding-bottom: 2%">
+                        <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Daftar') }}

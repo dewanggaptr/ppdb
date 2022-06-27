@@ -48,13 +48,13 @@ Route::group(['prefix' => '/admin'], function () {
 });
 
 Route::group(['prefix' => '/user'], function(){
-    Route::get('/', [HomeController::class, 'index'])->name('user');
-    Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar');
-    Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan');
-    Route::get('/edit', [PendaftarController::class, 'edit'])->name('edit');
-    Route::post('/simpanedit', [PendaftarController::class, 'update'])->name('simpanedit');
-    Route::get('/detail', [PendaftarController::class, 'show'])->name('show');
-    Route::get('/cetak_formulir', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir');
+    Route::get('/', [HomeController::class, 'index'])->name('user')->middleware('user');
+    Route::get('/daftar', [PendaftarController::class, 'create'])->name('daftar')->middleware('user');
+    Route::post('/daftarkan', [PendaftarController::class, 'store'])->name('daftarkan')->middleware('user');
+    Route::get('/edit', [PendaftarController::class, 'edit'])->name('edit')->middleware('user');
+    Route::post('/simpanedit', [PendaftarController::class, 'update'])->name('simpanedit')->middleware('user');
+    Route::get('/detail', [PendaftarController::class, 'show'])->name('show')->middleware('user');
+    Route::get('/cetak_formulir', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir')->middleware('user');
 });
 
 
