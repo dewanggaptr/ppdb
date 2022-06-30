@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Pendaftar;
 
 class AdminController extends Controller
 {
@@ -77,8 +78,8 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $akun = DB::table('user')->where('id', $id)->first();
-        return view('admin.detail', ['akun' => $akun]);
+        $user = DB::table('pendaftar')->where('user_id', $id)->first();
+        return view('admin.detail', ['user' => $user]);
     }
 
     /**
