@@ -43,6 +43,8 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/show/{id}', [AdminController::class, 'show'])->name('admin.show')->middleware('admin');
     Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit')->middleware('admin');
     Route::put('/update/{id}', [AdminController::class, 'update'])->name('admin.update')->middleware('admin');
+    Route::get('/go/{id}', [AdminController::class, 'go'])->name('admin.go')->middleware('admin');
+    Route::put('/status/{id}', [AdminController::class, 'status'])->name('admin.status')->middleware('admin');
     Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.destroy')->middleware('admin');
     //Route::get('/data/user', [UserController::class, 'index'])->name('index')->middleware('admin'); //kenapa malah nampilkan create form pendaftaran?
 });
@@ -57,6 +59,9 @@ Route::group(['prefix' => '/user'], function(){
     Route::get('/cetak_formulir', [PendaftarController::class, 'cetak_formulir'])->name('cetak_formulir')->middleware('user');
 });
 
+Route::group(['prefix' => '/siswa'], function(){
+    Route::get('/', [HomeController::class, 'index'])->name('siswa')->middleware('siswa');
+});
 
 Route::get('logout', [LoginController::class, 'logout']);
 

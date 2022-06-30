@@ -147,4 +147,26 @@ class AdminController extends Controller
     //         ->with('i', (request()->input('page', 1) - 1) * 2);
     // }
 // }
+    
+    //redirect
+    public function go($id)
+    {
+        $akun = DB::table('user')->where('id',$id)->first();
+        return view('admin.status',['akun' => $akun]);
+    }
+
+    //update role
+    public function status(Request $request, $id)
+    {
+        $request->validate([
+            'role' => 'required',
+        ]);
+
+        $akun = User::where('id', $id)->first();
+        $akun->role = $request->get('role');
+        $akun->save();
+        
+        return redirect()->route('admin.index')
+            ->with('success', 'Status User Berhasil Diupdate');
+    }
 }

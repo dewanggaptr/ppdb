@@ -31,6 +31,10 @@ class HomeController extends Controller
         {
             return view('admin.home');
         }
+        elseif($user->role == 'Siswa')
+        {
+            return view('siswa.index', compact('user'));
+        }
         else
         {
             return view('user.index', ['user' => $user]); 

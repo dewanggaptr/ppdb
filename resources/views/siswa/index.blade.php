@@ -16,7 +16,7 @@
                             </div>
                         @endif
                         <br>
-                        <h5>Welcome, You are user!</h5>
+                        <h5>Congratulations , You're Students</h5>
                         <br>
                         
                         <table class="table table-responsive">
@@ -33,35 +33,10 @@
                             <tr>
                                 <th>Status</th>
                                 <td>:</td>
-                                <td><strong>BELUM DITERIMA</strong></td>
-                            </tr>
-                            <tr>
-                                <th>Created At</th>
-                                <th>:</th>
-                                <td>{{ $user->created_at }}</td>
+                                <td><strong>DITERIMA</strong></td>
                             </tr>
                         </table>
                         <br>
-                        
-                        
-                        @if (empty($user->all() && $user->nisn))
-                            <div class="col-lg-12 margin-tb">
-                                <div class="float-right my-2">
-                                    &nbsp;
-                                    &nbsp;
-                                    <a class="btn btn-success" href="{{ route('daftar') }}">Registrasi</a>
-                                </div>
-                            </div>
-                        @else    
-                            <div class="col-lg-12 margin-tb">
-                                <div class="float-right my-2">
-                                    &nbsp;
-                                    &nbsp;
-                                    <a class="btn btn-success" href="{{ route('show') }}">Lihat Formku</a>
-                                </div>
-                            </div>
-                        @endif
-                        
                     </div>
                 </div>
             </div>

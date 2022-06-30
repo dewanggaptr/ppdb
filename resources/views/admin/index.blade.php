@@ -9,9 +9,9 @@
                     <h2 style="text-align: center">TAMPILAN DATA AKUN USER</h2>
                 </div>
                 <br>
-                <div class="float-right my-2">
+                {{-- <div class="float-right my-2">
                     <a class="btn btn-success" href="{{ route('admin.create') }}"> Input Akun</a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <br>
@@ -36,17 +36,20 @@
                 <th>Username</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Status</th>
             </tr>
             @foreach ($paginate as $a)
                 <tr>
                     <td>{{ $a->username }}</td>
                     <td>{{ $a->name }}</td>
                     <td>{{ $a->email }}</td>
+                    <td>{{ $a->role }}</td>
                     <td>
                         <form action="{{ route('admin.destroy', $a->id) }}" method="POST">
 
                             <a class="btn btn-info" href="{{ route('admin.show', $a->id) }}">Show</a>
                             <a class="btn btn-primary" href="{{ route('admin.edit', $a->id) }}">Edit</a>
+                            <a class="btn btn-success" href="{{ route('admin.go', $a->id) }}">Status</a>
 
                             @csrf
                             @method('DELETE')
