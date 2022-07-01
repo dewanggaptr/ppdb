@@ -42,17 +42,6 @@
                             </tr>
                         </table>
                         <br>
-                        
-                        
-                        @if (empty($user->all() && $user->nisn))
-                            <div class="col-lg-12 margin-tb">
-                                <div class="float-right my-2">
-                                    &nbsp;
-                                    &nbsp;
-                                    <a class="btn btn-success" href="{{ route('daftar') }}">Registrasi</a>
-                                </div>
-                            </div>
-                        @else    
                             <div class="col-lg-12 margin-tb">
                                 <div class="float-right my-2">
                                     &nbsp;
@@ -60,7 +49,6 @@
                                     <a class="btn btn-success" href="{{ route('show') }}">Lihat Formku</a>
                                 </div>
                             </div>
-                        @endif
                         
                     </div>
                 </div>
